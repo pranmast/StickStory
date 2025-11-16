@@ -1,50 +1,29 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html>
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>StickStory — AI-driven stickman animator</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8" />
+  <title>AI Stickman Animator</title>
+  <style>
+    body { font-family: Arial; text-align: center; background: #111; color: #fff; }
+    #canvas { background: #222; margin-top: 20px; }
+    textarea { width: 90%; height: 100px; margin-top: 20px; }
+    button { padding: 12px 20px; margin: 10px; font-size: 16px; }
+  </style>
 </head>
 <body>
-  <main>
-    <h1>StickStory — Prompt → Stickman Video</h1>
-    <p class="lead">Type a short prompt (1-2 lines). The stickmen will act it out.</p>
 
-    <textarea id="prompt" rows="3" placeholder="e.g. Two neighbours seldom meet, quarrel, then kiss and celebrate near a bench."></textarea>
+<h1>AI Stickman Animation Generator</h1>
 
-    <div class="controls">
-      <label>Resolution:
-        <select id="resolution">
-          <option value="480x270">480 × 270 (fast)</option>
-          <option value="640x360">640 × 360</option>
-        </select>
-      </label>
+<textarea id="prompt" placeholder="Enter your scene… e.g. Two neighbours who want to kiss but quarrel when they meet"></textarea>
+<br>
+<button onclick="startAnimation()">Generate Animation</button>
+<button onclick="playAndRecord()">Export MP4</button>
 
-      <label>Duration (sec):
-        <input id="duration" type="number" value="8" min="3" max="30" />
-      </label>
-    </div>
+<canvas id="canvas" width="500" height="400"></canvas>
 
-    <div class="buttons">
-      <button id="generateBtn">Generate Storyboard</button>
-      <button id="renderBtn" disabled>Render & Record</button>
-      <button id="downloadBtn" disabled>Download</button>
-    </div>
+<script src="whammy.js"></script>
+<script src="mp4box.all.min.js"></script>
+<script src="stickman.js"></script>
 
-    <div id="stage-wrapper">
-      <canvas id="scene" width="480" height="270"></canvas>
-    </div>
-
-    <div id="log" class="log"></div>
-
-    <footer>
-      <small>All client-side — privacy preserved (stickmen only). Host on GitHub Pages.</small>
-    </footer>
-  </main>
-
-  <script src="ccapture.min.js"></script>
-  <script src="stickman-animator.js"></script>
-  <script src="app.js"></script>
 </body>
 </html>
