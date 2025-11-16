@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>StickStory — prompt → stickman video</title>
+  <link rel="stylesheet" href="style.css" />
+  <!-- Konva -->
+  <script src="https://cdn.jsdelivr.net/npm/konva@9.3.0/konva.min.js"></script>
+</head>
+<body>
+  <main>
+    <h1>StickStory</h1>
+    <p class="lead">Type a short prompt and generate a stick-figure short video (downloadable).</p>
+
+    <label for="prompt">Story prompt</label>
+    <textarea id="prompt" rows="3" placeholder="e.g. Two neighbours seldom meet, quarrel, then kiss and celebrate."></textarea>
+
+    <div class="controls">
+      <label>Resolution:
+        <select id="resolution">
+          <option value="480x270">480 x 270 (fast)</option>
+          <option value="640x360">640 x 360</option>
+          <option value="960x540">960 x 540 (slower)</option>
+        </select>
+      </label>
+
+      <label>Duration (sec):
+        <input id="duration" type="number" value="6" min="2" max="20" />
+      </label>
+    </div>
+
+    <div class="buttons">
+      <button id="generateBtn">Generate Storyboard</button>
+      <button id="renderBtn" disabled>Render & Record Video</button>
+      <button id="downloadBtn" disabled>Download Video</button>
+    </div>
+
+    <div id="stage-wrapper">
+      <div id="stage-container"></div>
+    </div>
+
+    <div id="log" class="log"></div>
+
+    <footer>
+      <small>StickStory • client-side only • webm download • GitHub Pages friendly</small>
+    </footer>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
