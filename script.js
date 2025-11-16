@@ -21,3 +21,15 @@ async function generateStickmanScript(text) {
 function exportMP4() {
     startMP4Capture();
 }
+function startMP4Capture() {
+    capturer = new CCapture({
+        framerate: 30,
+        format: 'webm',
+        workersPath: './'
+    });
+
+    capturing = true;
+    capturer.start();
+
+    alert("MP4 export started: generate animation now!");
+}
