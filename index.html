@@ -1,28 +1,50 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="en">
 <head>
-  <title>AI Stickman Story Animator</title>
-  <meta charset="UTF-8">
-  <script src="script.js" defer></script>
-  <script src="stickman-animator.js" defer></script>
-  <script src="ccapture.min.js"></script>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>StickStory — AI-driven stickman animator</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
-
 <body>
-  <h1>AI Stickman Story Animator 🎬</h1>
+  <main>
+    <h1>StickStory — Prompt → Stickman Video</h1>
+    <p class="lead">Type a short prompt (1-2 lines). The stickmen will act it out.</p>
 
-  <textarea id="prompt" placeholder="Enter your story..."></textarea>
+    <textarea id="prompt" rows="3" placeholder="e.g. Two neighbours seldom meet, quarrel, then kiss and celebrate near a bench."></textarea>
 
-  <div>
-    <label>Character A: <input id="charAcolor" type="color" value="#0000ff"></label>
-    <label>Character B: <input id="charBcolor" type="color" value="#ff0000"></label>
-  </div>
+    <div class="controls">
+      <label>Resolution:
+        <select id="resolution">
+          <option value="480x270">480 × 270 (fast)</option>
+          <option value="640x360">640 × 360</option>
+        </select>
+      </label>
 
-  <button onclick="createAnimation()">Generate Animation</button>
-  <button onclick="exportMP4()">Export MP4</button>
+      <label>Duration (sec):
+        <input id="duration" type="number" value="8" min="3" max="30" />
+      </label>
+    </div>
 
-  <canvas id="scene" width="900" height="500"></canvas>
+    <div class="buttons">
+      <button id="generateBtn">Generate Storyboard</button>
+      <button id="renderBtn" disabled>Render & Record</button>
+      <button id="downloadBtn" disabled>Download</button>
+    </div>
 
+    <div id="stage-wrapper">
+      <canvas id="scene" width="480" height="270"></canvas>
+    </div>
+
+    <div id="log" class="log"></div>
+
+    <footer>
+      <small>All client-side — privacy preserved (stickmen only). Host on GitHub Pages.</small>
+    </footer>
+  </main>
+
+  <script src="ccapture.min.js"></script>
+  <script src="stickman-animator.js"></script>
+  <script src="app.js"></script>
 </body>
 </html>
